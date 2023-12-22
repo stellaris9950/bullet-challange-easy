@@ -9,7 +9,7 @@ class Player:
     def __init__(self, radius: int, pos: pygame.Vector2):
         self.radius = radius
         self.pos = pos
-        self.bullet_pos = position of bullet
+        self.bullet_pos = pos
 
     def wallDetect(self):
         if self.pos.x <= 20:
@@ -24,7 +24,7 @@ class Player:
         self.pos.x += 5
 
     def shootBullet(self):
-        bullet position += 5
+        self.bullet_pos.y -= 5
 class Target:
     def __init__(self,):
 
@@ -89,6 +89,9 @@ while running:
         player.moveLeft()
     if keys[pygame.K_d]:
         player.moveRight()
+    if keys[pygame.K_SPACE]:
+        player.shootBullet()
+        pygame.draw.circle(screen, "white", player.bullet_pos, 5)
 
 
 
