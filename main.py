@@ -9,6 +9,7 @@ class Player:
     def __init__(self, radius: int, pos: pygame.Vector2):
         self.radius = radius
         self.pos = pos
+        self.bullet_pos = position of bullet
 
     def wallDetect(self):
         if self.pos.x <= 20:
@@ -22,12 +23,13 @@ class Player:
     def moveRight(self):
         self.pos.x += 5
 
-
+    def shootBullet(self):
+        bullet position += 5
 class Target:
     def __init__(self,):
 
         self.radius = random.randrange(5, 20)
-        self.pos = pygame.Vector2(random.randrange(0, 720), random.randrange(0, 540))
+        self.pos = pygame.Vector2(random.randrange(0, 720), random.randrange(0, 500))
         self.color = pygame.Vector3(random.randrange(0, 255), random.randrange(0, 255), random.randrange(0, 255))
 
         self.move = pygame.Vector2(random.randrange(-2, 2), random.randrange(-2, 2))
@@ -38,7 +40,7 @@ class Target:
         if self.pos.x <= 0 or self.pos.x >= 720:
             self.move.x *= -1
 
-        if self.pos.y <= 0 or self.pos.y >= 540:
+        if self.pos.y <= 0 or self.pos.y >= 500:
             self.move.y *= -1
 
 
@@ -104,6 +106,7 @@ while running:
 
     # draw food
     for target in target_list:
+        target.moveCircle()
         pygame.draw.circle(screen, target.color, target.pos, target.radius)
 
 
